@@ -1,0 +1,73 @@
+package programajava.classes;
+
+import programajava.interfaces.PermitirAcesso;
+
+/*Classe filha de pessoa*/
+public class Diretor extends Pessoa implements PermitirAcesso{
+
+	private String registroEducacao;
+	private int tempoDirecao;
+	private String titulacao;
+
+	private String login;
+	private String senha;
+
+	public Diretor() {/* construtor padrão */
+
+	}
+
+	public Diretor(String login, String senha) {/* construtor passando como parâmetros login e senha */
+		this.login = login;
+		this.senha = senha;
+	}
+
+	public String getRegistroEducacao() {
+		return registroEducacao;
+	}
+
+	public void setRegistroEducacao(String registroEducacao) {
+		this.registroEducacao = registroEducacao;
+	}
+
+	public int getTempoDirecao() {
+		return tempoDirecao;
+	}
+
+	public void setTempoDirecao(int tempoDirecao) {
+		this.tempoDirecao = tempoDirecao;
+	}
+
+	public String getTitulacao() {
+		return titulacao;
+	}
+
+	public void setTitulacao(String titulacao) {
+		this.titulacao = titulacao;
+	}
+
+	@Override
+	public String toString() {
+		return "Diretor [registroEducacao=" + registroEducacao + ", tempoDirecao=" + tempoDirecao + ", titulacao="
+				+ titulacao + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNascimento=" + dataNascimento
+				+ ", idade=" + idade + ", nomePai=" + nomePai + ", nomeMae=" + nomeMae + "]";
+	}
+
+	@Override
+	public double salario() {
+		return 3950 + (3950 * 0.9);
+	}
+
+	@Override
+	public boolean autenticar(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+		return autenticar();
+	}
+
+	@Override
+	public boolean autenticar() {
+
+		return login.equals("admin") && senha.equals("dir");
+	}
+
+}
